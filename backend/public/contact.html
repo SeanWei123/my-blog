@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Contact - Wei&Web</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- 添加 EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- 初始化 EmailJS -->
+    <script type="text/javascript">
+        (function () {
+            emailjs.init('Cr_eySdKnNLJrLKxY');
+        })();
+    </script>
+</head>
+
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Header -->
+        <header id="header">
+            <h1><a href="index.html">Wei&Web</a></h1>
+            <nav class="links">
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main -->
+        <div id="main">
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2>Contact Us</h2>
+                        <p>Get in touch with our team</p>
+                    </div>
+                </header>
+
+                <!-- 联系表单 -->
+                <section class="contact-form">
+                    <form id="contact-form" onsubmit="return sendEmail(event)">
+                        <div class="row gtr-uniform">
+                            <div class="col-6 col-12-xsmall">
+                                <input type="text" name="name" id="name" placeholder="Name" required />
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <input type="email" name="email" id="email" placeholder="Email" required />
+                            </div>
+                            <div class="col-12">
+                                <input type="text" name="subject" id="subject" placeholder="Subject" required />
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" id="message" placeholder="Message" rows="6"
+                                    required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions">
+                                    <li><input type="submit" value="Send Message" class="primary" /></li>
+                                    <li><input type="reset" value="Reset" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- 联系信息 -->
+                <section class="contact-info">
+                    <h3>Other Ways to Connect</h3>
+                    <div class="contact-details">
+                        <!-- 联系方式详情 -->
+                    </div>
+                </section>
+            </article>
+        </div>
+
+        <!-- Footer
+        <section id="footer">
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+
+        </section> -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- 添加发送邮件的 JavaScript 代码 -->
+    <script>
+        function sendEmail(e) {
+            e.preventDefault();
+
+            // 获取表单数据
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // 发送邮件
+            emailjs.send(
+                'service_zgr2eub',
+                'template_xr757x8',
+                {
+                    to_email: 'wei1688001@gmail.com',
+                    from_name: name,
+                    from_email: email,
+                    subject: subject,
+                    message: message,
+                }
+            ).then(
+                function (response) {
+                    alert('Email sent successfully!');
+                    document.getElementById('contact-form').reset();
+                },
+                function (error) {
+                    alert('Sending failed, please try again later!');
+                    console.error('Send failed:', error);
+                }
+            );
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>
